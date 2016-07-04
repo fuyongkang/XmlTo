@@ -2,7 +2,6 @@ package com.fyk.fastxml.parser.deserializer.aware;
 
 import java.lang.reflect.Type;
 
-import com.alibaba.fastjson.parser.JSONToken;
 import com.fyk.fastxml.parser.DefaultXMLParser;
 import com.fyk.fastxml.parser.XMLLexer;
 import com.fyk.fastxml.parser.XMLToken;
@@ -21,13 +20,13 @@ public class CharArrayDeserializer implements ObjectDeserializer {
         final XMLLexer lexer = parser.getLexer();
         if (lexer.token() == XMLToken.LITERAL_STRING) {
             String val = lexer.stringVal();
-            lexer.nextToken(JSONToken.COMMA);
+            lexer.nextToken(XMLToken.COMMA);
             return (T) val.toCharArray();
         }
         
         if (lexer.token() == XMLToken.LITERAL_INT) {
             Number val = lexer.integerValue();
-            lexer.nextToken(JSONToken.COMMA);
+            lexer.nextToken(XMLToken.COMMA);
             return (T) val.toString().toCharArray();
         }
 
